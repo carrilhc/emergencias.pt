@@ -148,6 +148,7 @@ function FMAMap({
                 }) {
     const [center, setCenter] = useState(DEFAULT_CENTER);
     const [zoom, setZoom] = useState(DEFAULT_ZOOM);
+    const [showLegend, setShowLegend] = useState(false);
 
     useEffect(() => { fetchIncidents?.(); }, [fetchIncidents]);
 
@@ -202,20 +203,24 @@ function FMAMap({
                 </MapContainer>
 
                 {/* Legenda (por estado) */}
-                <div style={{
-                    position: 'absolute', top: 8, right: 8, background: 'rgba(255,255,255,0.92)', zIndex: 1000,
-                    borderRadius: 8, padding: '6px 10px', boxShadow: '0 1px 3px rgba(0,0,0,.12)', fontSize: 12
-                }}>
-                    {Object.entries(STATUS_COLORS).map(([label, color]) => (
-                        <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-              <span style={{
-                  width: 10, height: 10, borderRadius: '50%', background: color, display: 'inline-block',
-                  border: '2px solid rgba(0,0,0,0.1)'
-              }} />
-                            <span>{label}</span>
-                        </div>
-                    ))}
-                </div>
+                {showLegend ? (
+                    <div onClick={() => setShowLegend(false)}
+                         className="cursor-pointer absolute bottom-6 right-1 z-[1000] bg-white bg-opacity-90
+                                    px-2 py-1.5 rounded-lg text-xs leading-[1.5] shadow-sm"
+                         style={{
+                    }}>
+                        {Object.entries(STATUS_COLORS).map(([label, color]) => (
+                            <div key={label} style={{display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4}}>
+                                <span className="w-[10px] h-[10px] rounded-full inline-block border-2 border-black/10"
+                                      style={{background: color,}}/>
+                                <span>{label}</span>
+                            </div>
+                        ))}
+                    </div>
+                ) : <button className="cursor-pointer absolute bottom-6 right-2 bg-white text-gray-700 bg-opacity-80 px-3 py-2 rounded-full text-2xl z-[1000]"
+                            onClick={() => setShowLegend(true)}>
+                    🛈
+                </button>}
 
                 {incidents?.loading && <div className="map-banner">A carregar…</div>}
                 {incidents?.error && <div className="map-banner map-banner--error">{incidents.error}</div>}

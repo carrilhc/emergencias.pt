@@ -8,7 +8,7 @@ class NavBar extends Component {
 
     render() {
         return (
-            <nav className="fixed inset-x-0 top-0 bg-blue-500 h-16 z-[1000]">
+            <nav className="fixed inset-x-0 top-0 bg-blue-500 h-16 z-[1000] w-screen">
                 <div className="max-w-6xl mx-auto px-4 h-16">
                     <div className="flex justify-between h-16">
                         <div className="flex space-x-4">
@@ -26,8 +26,8 @@ class NavBar extends Component {
                         </div>
 
                         <div className="md:hidden flex items-center">
-                            <button className="mobile-menu-button focus:outline-none" onClick={this.addActiveClass}>
-                                <i className="bx bx-menu text-3xl mt-1 text-white" />
+                            <button className="mobile-menu-button text-white text-2xl" onClick={this.addActiveClass}>
+                                ☰
                             </button>
                         </div>
                     </div>
@@ -41,9 +41,10 @@ class NavBar extends Component {
                             : 'hidden'
                     }
                 >
-                    <Link to="/" className="block py-2 px-4 text-sm hover:bg-gray-200" onClick={this.addActiveClass}>Início</Link>
                     <Link to="/lista" className="block py-2 px-4 text-sm hover:bg-gray-200" onClick={this.addActiveClass}>Lista</Link>
+                    <Link to="/mapa" className="block py-2 px-4 text-sm hover:bg-gray-200" onClick={this.addActiveClass}>Mapa</Link>
                     <Link to="/fma" className="block py-2 px-4 text-sm hover:bg-gray-200" onClick={this.addActiveClass}>FMA</Link>
+                    <Link to="/fma-mapa" className="block py-2 px-4 text-sm hover:bg-gray-200" onClick={this.addActiveClass}>Mapa FMA</Link>
                 </div>
             </nav>
         );
