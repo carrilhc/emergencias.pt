@@ -20,7 +20,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0008FF] shadow-2xl backdrop-blur-lg border-b border-cyan-400/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#0008FF] to-[#040880] shadow-2xl backdrop-blur-lg border-b border-cyan-400/10">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2 group">
@@ -28,60 +28,6 @@ class NavBar extends Component {
                 Emergencias.pt
               </span>
             </Link>
-
-            <div className="hidden">
-              <NavLink
-                to="/lista"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
-                    isActive
-                      ? "bg-cyan-400 text-slate-950 shadow-lg scale-105"
-                      : "text-white hover:bg-cyan-400/15 hover:scale-105"
-                  }`
-                }
-              >
-                Lista
-              </NavLink>
-
-              <NavLink
-                to="/mapa"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
-                    isActive
-                      ? "bg-cyan-400 text-slate-950 shadow-lg scale-105"
-                      : "text-white hover:bg-cyan-400/15 hover:scale-105"
-                  }`
-                }
-              >
-                Mapa
-              </NavLink>
-
-              <NavLink
-                to="/fma"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
-                    isActive
-                      ? "bg-cyan-400 text-slate-950 shadow-lg scale-105"
-                      : "text-white hover:bg-cyan-400/15 hover:scale-105"
-                  }`
-                }
-              >
-                FMA
-              </NavLink>
-
-              <NavLink
-                to="/fma-mapa"
-                className={({ isActive }) =>
-                  `px-4 py-2 rounded-xl transition-all duration-300 font-medium ${
-                    isActive
-                      ? "bg-cyan-400 text-slate-950 shadow-lg scale-105"
-                      : "text-white hover:bg-cyan-400/15 hover:scale-105"
-                  }`
-                }
-              >
-                Mapa FMA
-              </NavLink>
-            </div>
 
             <button
               onClick={this.toggleMenu}
